@@ -11,11 +11,19 @@ services:
       - POSTGRES_DB=${DB_NAME}
     ports:
       - "5432:5432"
-
+    volumes:
+      - db:/var/lib/postgresql/data
   app:
     container_name: app
     build: .
-    volumes:
-      - .:/app
-    depends_on: 
+    env_file:
+      - .env
+    depends_on:
       - db
+    volumes:
+      - ./app:/app
+    tty: true
+    stdin_open: true
+
+volumes:
+  db:

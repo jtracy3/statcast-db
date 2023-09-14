@@ -1,12 +1,10 @@
-FROM python:3.10.7-alpine
-
-RUN apt-get update -y
-RUN apt-get install vim
+FROM python:3.10-slim
 
 RUN mkdir /app
 
 COPY app /app
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-ENTRYPOINT [ "python", "/app/main.py" ]
+ENTRYPOINT [ "python", "app/test1.py" ]
+#ENTRYPOINT ["/bin/sh"]
