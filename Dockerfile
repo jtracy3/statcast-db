@@ -1,4 +1,4 @@
-FROM python:3.10.7-alpine
+FROM python:3.11.4-alpine
 
 RUN apt-get update -y
 RUN apt-get install vim

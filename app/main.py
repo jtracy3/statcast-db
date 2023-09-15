@@ -104,7 +104,7 @@ def clean(data):
     data_c = data.copy()
     data_c["game_type"] = data_c.game_type.map(GAME_TYPE)
     data_c = data_c[~data_c.game_type.isin(["Exhibition", "Spring Training"])]
-    data.rename(columns={
+    data_c.rename(columns={
         "pitcher": "pitcher_id",
         "batter": "batter_id",
         "player_name": "pitcher_name",
