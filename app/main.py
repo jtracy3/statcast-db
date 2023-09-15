@@ -25,11 +25,15 @@ if __name__ == "__main__":
     # else:
     #     raise Exception("Need to set variable WORKING_ENV")
 
+    # i = 0
     stats = statcast_data_test(args.start_date, args.end_date)
-    for row in stats.to_dict():
+    for row in stats.to_dict(orient="records"):
+        # row.update({"id": i})
         statcast = Statcast(**row)
         db.add(statcast)
         db.commit()
         db.refresh(statcast)
+        # i += 1
 
+    db.close()
     print("here")

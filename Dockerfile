@@ -4,7 +4,9 @@ RUN mkdir /app
 
 COPY app /app
 
+WORKDIR /app
+
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-ENTRYPOINT [ "python", "app/test1.py" ]
+ENTRYPOINT [ "python", "main.py" ]
 #ENTRYPOINT ["/bin/sh"]

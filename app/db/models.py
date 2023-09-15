@@ -25,7 +25,7 @@ class Statcast(Base):
     pitch_type = Column(String, nullable=False)
     pitch_name = Column(String, nullable=False)
     pitcher_id = Column(BigInteger, nullable=False)
-    pitcher_name = Column(BigInteger, nullable=False)
+    pitcher_name = Column(String, nullable=False)
     pitcher_handedness = Column(String, nullable=False)
     batter_id = Column(BigInteger, nullable=False)
     batter_name = Column(String, nullable=False)
@@ -34,7 +34,4 @@ class Statcast(Base):
     inning_topbot = Column(String, nullable=False)
     outs_when_up = Column(BigInteger, nullable=False)
     at_bat_number = Column(BigInteger, nullable=False)
-    pitch_number = Column(BigInteger, nullable=False)
-
-    def __init__(self):
-        pass
+    pitch_number = Column(BigInteger, nullable=True)
