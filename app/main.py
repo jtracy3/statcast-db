@@ -1,10 +1,8 @@
 import argparse
-import os
 
-import pandas as pd
 from lib import statcast_data_test
 from db.base import Base, Session, engine
-from db.models import Statcast
+from db.models import Pitches
 
 Base.metadata.create_all(bind=engine)
 
@@ -27,9 +25,9 @@ if __name__ == "__main__":
 
     # i = 0
     stats = statcast_data_test(args.start_date, args.end_date)
-    for row in stats.to_dict(orient="records"):
+    for row in stats.to_dict("records"):
         # row.update({"id": i})
-        statcast = Statcast(**row)
+        statcast = Pitches(**row)
         db.add(statcast)
         db.commit()
         db.refresh(statcast)

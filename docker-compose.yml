@@ -13,17 +13,19 @@ services:
       - "5432:5432"
     volumes:
       - db:/var/lib/postgresql/data
-  app:
-    container_name: app
-    build: .
-    env_file:
-      - .env
-    depends_on:
-      - db
-    volumes:
-      - ./app:/app
-    tty: true
-    stdin_open: true
+      - ./app/db/init/:/docker-entrypoint-initdb.d/
+
+  # app:
+  #   container_name: app
+  #   build: .
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - db
+  #   volumes:
+  #     - ./app:/app
+  #   tty: true
+  #   stdin_open: true
 
 volumes:
   db:

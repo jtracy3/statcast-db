@@ -12,9 +12,9 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship
 
 
-class Statcast(Base):
+class Pitches(Base):
 
-    __tablename__ = "statcast"
+    __tablename__ = "pitches"
 
     id = Column(Integer, primary_key=True, unique=True)
     game_pk = Column(Integer, nullable=False)
